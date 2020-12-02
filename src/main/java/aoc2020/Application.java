@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
 import aoc2020.days.Day1;
+import aoc2020.days.Day2;
 
 public class Application
 {
@@ -22,5 +23,12 @@ public class Application
 
         int day1Part2Answer = day1.determineSumInExpenseReportAndGetProduct(2020, 3);
         log.info("day 1 part 2, answer: " + day1Part2Answer);
+
+        Day2 day2 = new Day2();
+        int day2Part1Answer = day2.getAmountOfPasswordsAdheringToPolicy(false);
+        log.info("day 2 part 1, answer: " + day2Part1Answer);
+
+        int day2Part2Answer = day2.getAmountOfPasswordsAdheringToPolicy(true);
+        log.info("day 2 part 2, answer: " + day2Part2Answer);
     }
 }
