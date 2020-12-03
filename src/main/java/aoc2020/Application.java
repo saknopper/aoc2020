@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import aoc2020.days.Day1;
 import aoc2020.days.Day2;
+import aoc2020.days.Day3;
 
 public class Application
 {
@@ -30,5 +31,17 @@ public class Application
 
         int day2Part2Answer = day2.getAmountOfPasswordsAdheringToPolicy(true);
         log.info("day 2 part 2, answer: " + day2Part2Answer);
+
+        Day3 day3 = new Day3();
+        long day3Part1Answer = day3.getAmountOfTreesEncounteredUsingSlope(3, 1);
+        log.info("day 3 part 1, answer: " + day3Part1Answer);
+
+        long day3Part2Answer1 = day3.getAmountOfTreesEncounteredUsingSlope(1, 1);
+        long day3Part2Answer2 = day3.getAmountOfTreesEncounteredUsingSlope(3, 1);
+        long day3Part2Answer3 = day3.getAmountOfTreesEncounteredUsingSlope(5, 1);
+        long day3Part2Answer4 = day3.getAmountOfTreesEncounteredUsingSlope(7, 1);
+        long day3Part2Answer5 = day3.getAmountOfTreesEncounteredUsingSlope(1, 2);
+        long day3Part2Answer = day3Part2Answer1 * day3Part2Answer2 * day3Part2Answer3 * day3Part2Answer4 * day3Part2Answer5;
+        log.info("day 3 part 2, answer: " + day3Part2Answer);
     }
 }
