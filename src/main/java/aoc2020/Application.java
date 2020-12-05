@@ -8,6 +8,7 @@ import aoc2020.days.Day1;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
+import aoc2020.days.Day5;
 
 public class Application
 {
@@ -52,5 +53,12 @@ public class Application
 
 		long day4Part2Answer = day4.getAmountOfValidPassports(true);
 		log.info("day 4 part 2, answer: " + day4Part2Answer);
+
+		Day5 day5 = new Day5();
+		long day5Part1Answer = day5.getHighestSeatID();
+		log.info("day 5 part 1, answer: " + day5Part1Answer);
+
+		long day5Part2Answer = day5.getMySeatID();
+		log.info("day 5 part 2, answer: " + day5Part2Answer);
 	}
 }
