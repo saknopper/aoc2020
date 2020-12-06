@@ -9,6 +9,7 @@ import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
 import aoc2020.days.Day5;
+import aoc2020.days.Day6;
 
 public class Application
 {
@@ -60,5 +61,12 @@ public class Application
 
 		long day5Part2Answer = day5.getMySeatID();
 		log.info("day 5 part 2, answer: " + day5Part2Answer);
+
+		Day6 day6 = new Day6();
+		long day6Part1Answer = day6.getSumOfUniqueQuestionsAnsweredYesPerGroup();
+		log.info("day 6 part 1, answer: " + day6Part1Answer);
+
+		long day6Part2Answer = day6.getSumOfQuestionsAnsweredYesByEveryonePerGroup();
+		log.info("day 6 part 2, answer: " + day6Part2Answer);
 	}
 }
