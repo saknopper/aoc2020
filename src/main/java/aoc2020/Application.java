@@ -10,6 +10,7 @@ import aoc2020.days.Day3;
 import aoc2020.days.Day4;
 import aoc2020.days.Day5;
 import aoc2020.days.Day6;
+import aoc2020.days.Day7;
 
 public class Application
 {
@@ -68,5 +69,12 @@ public class Application
 
 		long day6Part2Answer = day6.getSumOfQuestionsAnsweredYesByEveryonePerGroup();
 		log.info("day 6 part 2, answer: " + day6Part2Answer);
+
+		Day7 day7 = new Day7();
+		long day7Part1Answer = day7.getPossibleOutermostBagsForBag("shiny gold bag");
+		log.info("day 7 part 1, answer: " + day7Part1Answer);
+
+		int day7Part2Answer = day7.getAmountOfRequiredBagsToCarryBag("shiny gold bag");
+		log.info("day 7 part 2, answer: " + day7Part2Answer);
 	}
 }
