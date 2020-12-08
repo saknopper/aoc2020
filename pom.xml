@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.sanderknopper</groupId>
 	<artifactId>aoc2020</artifactId>
-	<version>0.0.7-SNAPSHOT</version>
+	<version>0.0.8-SNAPSHOT</version>
 	<name>Advent of Code 2020</name>
 
 	<properties>
