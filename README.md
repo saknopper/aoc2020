@@ -5,4 +5,4 @@
 * Maven
 
 ### How to run
-`mvn exec:java -Dexec.mainClass="aoc2020.Application"`
+`mvn compile exec:java -Dexec.mainClass="aoc2020.Application"`
