@@ -7,13 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 public class Day8
 {
-    private static final Logger log = Logger.getLogger(Day8.class.getCanonicalName());
-
     private final List<ProgramLine> programLines = new ArrayList<>();
 
     private int accumulator = 0;

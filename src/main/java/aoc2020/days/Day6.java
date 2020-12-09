@@ -11,14 +11,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Day6
 {
-	private static final Logger log = Logger.getLogger(Day6.class.getCanonicalName());
-
 	public int getSumOfUniqueQuestionsAnsweredYesPerGroup() throws URISyntaxException, IOException
 	{
 		final List<Set<String>> questionsAnsweredYesPerGroup = new ArrayList<>();

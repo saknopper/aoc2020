@@ -11,13 +11,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 public class Day7
 {
-    private static final Logger log = Logger.getLogger(Day7.class.getCanonicalName());
-
     private final List<Rule> rules = new ArrayList<>();
 
     public Day7() throws URISyntaxException, IOException

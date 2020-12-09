@@ -8,14 +8,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Day5
 {
-	private static final Logger log = Logger.getLogger(Day5.class.getCanonicalName());
-
 	public long getHighestSeatID() throws URISyntaxException, IOException
 	{
 		final List<BoardingPass> passes = new ArrayList<>();

@@ -7,14 +7,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Day2
 {
-    private static final Logger log = Logger.getLogger(Day2.class.getCanonicalName());
-
     public int getAmountOfPasswordsAdheringToPolicy(boolean useNewPolicy) throws URISyntaxException, IOException
     {
         final List<PasswordAndPolicy> passwordItems = new ArrayList<>();

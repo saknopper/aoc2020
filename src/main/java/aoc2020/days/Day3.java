@@ -7,13 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 public class Day3
 {
-    private static final Logger log = Logger.getLogger(Day3.class.getCanonicalName());
-
     public long getAmountOfTreesEncounteredUsingSlope(int right, int down) throws URISyntaxException, IOException
     {
         final List<List<MapPosition>> map = new ArrayList<>();

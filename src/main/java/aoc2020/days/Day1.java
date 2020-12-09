@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,8 +14,6 @@ import org.paukov.combinatorics3.Generator;
 
 public class Day1
 {
-    private static final Logger log = Logger.getLogger(Day1.class.getCanonicalName());
-
     public int determineSumInExpenseReportAndGetProduct(int sumTarget, int numbersToPick)
             throws URISyntaxException, IOException
     {
@@ -34,8 +31,6 @@ public class Day1
 
         if (!validForTargetSum.isEmpty()) {
             List<Integer> solution = validForTargetSum.get(0);
-
-            log.info("The numbers " + solution + " add up to " + sumTarget);
 
             Integer multiplied = solution.stream().reduce(1, (a, b) -> a * b);
 

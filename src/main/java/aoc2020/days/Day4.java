@@ -9,14 +9,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Day4
 {
-	private static final Logger log = Logger.getLogger(Day4.class.getCanonicalName());
-
 	private static final String[] REQUIRED_FIELDS = { "byr", "iyr", "eyr", "hgt", "hcl", "ecl",
 			"pid" /* , "cid" */ };
 	private static final String[] VALID_ECL_VALUES = { "amb", "blu", "brn", "gry", "grn", "hzl", "oth" };
