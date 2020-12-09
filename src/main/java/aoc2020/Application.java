@@ -12,6 +12,7 @@ import aoc2020.days.Day5;
 import aoc2020.days.Day6;
 import aoc2020.days.Day7;
 import aoc2020.days.Day8;
+import aoc2020.days.Day9;
 
 public class Application
 {
@@ -22,8 +23,6 @@ public class Application
         log.info("Advent of Code 2020");
         log.info("-----------------------------");
         log.info("");
-
-        long startTimeMillis = System.currentTimeMillis();
 
         Day1 day1 = new Day1();
         int day1Part1Answer = day1.determineSumInExpenseReportAndGetProduct(2020, 2);
@@ -87,6 +86,11 @@ public class Application
         int day8Part2Answer = day8.fixProgramToMakeItTerminateAndGetAccValue();
         log.info("day 8 part 2, answer: " + day8Part2Answer);
 
-        log.info("took: " + (System.currentTimeMillis() - startTimeMillis) + "ms");
+        Day9 day9 = new Day9();
+        long day9Part1Answer = day9.getFirstNumberThatIsNoSumOfPrevious(25);
+        log.info("day 9 part 1, answer: " + day9Part1Answer);
+
+        long day9Part2Answer = day9.getSmallestAndLargestNumberAsSumFromContiguousSetOfNumbersAddingUpTo(day9Part1Answer);
+        log.info("day 9 part 2, answer: " + day9Part2Answer);
     }
 }
