@@ -7,6 +7,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import aoc2020.days.Day1;
+import aoc2020.days.Day10;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
@@ -105,5 +106,12 @@ public class Application
         long day9Part2Answer = day9
                 .getSmallestAndLargestNumberAsSumFromContiguousSetOfNumbersAddingUpTo(day9Part1Answer);
         LOG.info("day 9 part 2, answer: " + day9Part2Answer);
+
+        Day10 day10 = new Day10();
+        long day10Part1Answer = day10.getJoltDifferences();
+        LOG.info("day 10 part 1, answer: " + day10Part1Answer);
+
+        long day10Part2Answer = day10.getValidCombinations();
+        LOG.info("day 10 part 2, answer: " + day10Part2Answer);
     }
 }
