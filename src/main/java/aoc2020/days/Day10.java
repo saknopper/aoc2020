@@ -54,16 +54,13 @@ public class Day10
     {
         long[] combinationsAtIndex = new long[adapters.size()];
         Arrays.fill(combinationsAtIndex, -1);
+        combinationsAtIndex[combinationsAtIndex.length - 1] = 1;
 
         return countValidCombinationsFromIndex(adapters, 0, combinationsAtIndex);
     }
 
     private static long countValidCombinationsFromIndex(List<Integer> input, int index, long[] combinationsAtIndex)
     {
-        if (index == input.size() - 1) {
-            return 1;
-        }
-
         if (combinationsAtIndex[index] != -1) {
             return combinationsAtIndex[index];
         }
