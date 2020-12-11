@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Day11
 {
@@ -20,8 +19,8 @@ public class Day11
 	{
 		Path path = Paths.get(getClass().getClassLoader().getResource("day11.txt").toURI());
 
-		Stream<String> lines = Files.lines(path);
-		List<String> linesList = lines.collect(Collectors.toList());
+		var lines = Files.lines(path);
+		var linesList = lines.collect(Collectors.toList());
 		lines.close();
 
 		for (var l : linesList) {
@@ -36,10 +35,10 @@ public class Day11
 
 	public long getOccupiedSeatsAfterStabilizationAdjacentRules()
 	{
-		List<List<Position>> currentArea = createDeepCopy(seatingArea);
+		var currentArea = createDeepCopy(seatingArea);
 
 		for (int i = 0; i < MAX_LOOPS; i++) {
-			List<List<Position>> newArea = applySeatingRules(currentArea, 1, 4);
+			var newArea = applySeatingRules(currentArea, 1, 4);
 			if (areasAreEqual(currentArea, newArea)) {
 				return getAmountOfOccupiedSeats(newArea);
 			}
@@ -52,11 +51,11 @@ public class Day11
 
 	public long getOccupiedSeatsAfterStabilizationLineOfSightRules()
 	{
-		List<List<Position>> currentArea = createDeepCopy(seatingArea);
+		var currentArea = createDeepCopy(seatingArea);
 		int maxSteps = Math.max(currentArea.size(), currentArea.get(0).size());
 
 		for (int i = 0; i < MAX_LOOPS; i++) {
-			List<List<Position>> newArea = applySeatingRules(currentArea, maxSteps, 5);
+			var newArea = applySeatingRules(currentArea, maxSteps, 5);
 			if (areasAreEqual(currentArea, newArea)) {
 				return getAmountOfOccupiedSeats(newArea);
 			}
@@ -107,7 +106,7 @@ public class Day11
 			List<Position> curRow = currentArea.get(i);
 			List<Position> newRow = new ArrayList<>();
 			for (int j = 0; j < curRow.size(); j++) {
-				Position curPos = curRow.get(j);
+				var curPos = curRow.get(j);
 				if (curPos.getType() == PositionType.SeatEmpty
 						&& getNumberOfOccupiedSeatsAroundPosition(i, j, currentArea, maxSteps) == 0) {
 					newRow.add(new Position(PositionType.SeatOccupied));
@@ -123,7 +122,6 @@ public class Day11
 		}
 
 		return newArea;
-
 	}
 
 	private static int getNumberOfOccupiedSeatsAroundPosition(int row, int pos, List<List<Position>> area, int maxSteps)
