@@ -39,7 +39,7 @@ public class Day11
 		List<List<Position>> currentArea = createDeepCopy(seatingArea);
 
 		for (int i = 0; i < MAX_LOOPS; i++) {
-			List<List<Position>> newArea = applyAdjacentSeatingRules(currentArea);
+			List<List<Position>> newArea = applySeatingRules(currentArea, 1, 4);
 			if (areasAreEqual(currentArea, newArea)) {
 				return getAmountOfOccupiedSeats(newArea);
 			}
@@ -53,9 +53,10 @@ public class Day11
 	public long getOccupiedSeatsAfterStabilizationLineOfSightRules()
 	{
 		List<List<Position>> currentArea = createDeepCopy(seatingArea);
+		int maxSteps = Math.max(currentArea.size(), currentArea.get(0).size());
 
 		for (int i = 0; i < MAX_LOOPS; i++) {
-			List<List<Position>> newArea = applyLineOfSightSeatingRules(currentArea);
+			List<List<Position>> newArea = applySeatingRules(currentArea, maxSteps, 5);
 			if (areasAreEqual(currentArea, newArea)) {
 				return getAmountOfOccupiedSeats(newArea);
 			}
@@ -97,7 +98,8 @@ public class Day11
 		return true;
 	}
 
-	private static List<List<Position>> applyAdjacentSeatingRules(List<List<Position>> currentArea)
+	private static List<List<Position>> applySeatingRules(List<List<Position>> currentArea, int maxSteps,
+			int maxOccupiedSeats)
 	{
 		List<List<Position>> newArea = new ArrayList<>();
 
@@ -107,10 +109,10 @@ public class Day11
 			for (int j = 0; j < curRow.size(); j++) {
 				Position curPos = curRow.get(j);
 				if (curPos.getType() == PositionType.SeatEmpty
-						&& getNumberOfAdjacentSeatsOccupied(i, j, currentArea) == 0) {
+						&& getNumberOfOccupiedSeatsAroundPosition(i, j, currentArea, maxSteps) == 0) {
 					newRow.add(new Position(PositionType.SeatOccupied));
 				} else if (curPos.getType() == PositionType.SeatOccupied
-						&& getNumberOfAdjacentSeatsOccupied(i, j, currentArea) >= 4) {
+						&& getNumberOfOccupiedSeatsAroundPosition(i, j, currentArea, maxSteps) >= maxOccupiedSeats) {
 					newRow.add(new Position(PositionType.SeatEmpty));
 				} else {
 					newRow.add(new Position(curPos.getType()));
@@ -124,58 +126,7 @@ public class Day11
 
 	}
 
-	private static int getNumberOfAdjacentSeatsOccupied(int row, int pos, List<List<Position>> area)
-	{
-		int seatsOccupied = 0;
-
-		int minRow = Math.max(row - 1, 0);
-		int maxRow = Math.min(row + 2, area.size());
-		int minPos = Math.max(pos - 1, 0);
-		int maxPos = Math.min(pos + 2, area.get(0).size());
-
-		for (int i = minRow; i < maxRow; i++) {
-			for (int j = minPos; j < maxPos; j++) {
-				if (i == row && j == pos) {
-					continue;
-				}
-
-				if (area.get(i).get(j).getType() == PositionType.SeatOccupied) {
-					seatsOccupied++;
-				}
-			}
-		}
-
-		return seatsOccupied;
-	}
-
-	private static List<List<Position>> applyLineOfSightSeatingRules(List<List<Position>> currentArea)
-	{
-		List<List<Position>> newArea = new ArrayList<>();
-
-		for (int i = 0; i < currentArea.size(); i++) {
-			List<Position> curRow = currentArea.get(i);
-			List<Position> newRow = new ArrayList<>();
-			for (int j = 0; j < curRow.size(); j++) {
-				Position curPos = curRow.get(j);
-				if (curPos.getType() == PositionType.SeatEmpty
-						&& getNumberOfLineOfSightSeatsOccupied(i, j, currentArea) == 0) {
-					newRow.add(new Position(PositionType.SeatOccupied));
-				} else if (curPos.getType() == PositionType.SeatOccupied
-						&& getNumberOfLineOfSightSeatsOccupied(i, j, currentArea) >= 5) {
-					newRow.add(new Position(PositionType.SeatEmpty));
-				} else {
-					newRow.add(new Position(curPos.getType()));
-				}
-			}
-
-			newArea.add(newRow);
-		}
-
-		return newArea;
-
-	}
-
-	private static int getNumberOfLineOfSightSeatsOccupied(int row, int pos, List<List<Position>> area)
+	private static int getNumberOfOccupiedSeatsAroundPosition(int row, int pos, List<List<Position>> area, int maxSteps)
 	{
 		int seatsOccupied = 0;
 
@@ -191,7 +142,7 @@ public class Day11
 			int newRow = row;
 			int newPos = pos;
 
-			do {
+			for (int i = 0; i < maxSteps; i++) {
 				newRow += d[1];
 				newPos += d[0];
 
@@ -207,7 +158,7 @@ public class Day11
 					seatsOccupied++;
 					break;
 				}
-			} while (true);
+			}
 		}
 
 		return seatsOccupied;
@@ -215,17 +166,8 @@ public class Day11
 
 	private static long getAmountOfOccupiedSeats(List<List<Position>> area)
 	{
-		long counter = 0L;
-
-		for (var row : area) {
-			for (var pos : row) {
-				if (pos.getType() == PositionType.SeatOccupied) {
-					counter++;
-				}
-			}
-		}
-
-		return counter;
+		return area.stream().flatMap(row -> row.stream()).filter(pos -> pos.getType() == PositionType.SeatOccupied)
+				.count();
 	}
 
 	private static class Position
