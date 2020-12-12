@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import aoc2020.days.Day1;
 import aoc2020.days.Day10;
 import aoc2020.days.Day11;
+import aoc2020.days.Day12;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
@@ -40,21 +41,21 @@ public class Application
 
 		Day1 day1 = new Day1();
 		int day1Part1Answer = day1.determineSumInExpenseReportAndGetProduct(2020, 2);
-		LOG.info("day  1 part 1, answer: " + day1Part1Answer);
+		LOG.info("day 1 part 1, answer: " + day1Part1Answer);
 
 		int day1Part2Answer = day1.determineSumInExpenseReportAndGetProduct(2020, 3);
-		LOG.info("day  1 part 2, answer: " + day1Part2Answer);
+		LOG.info("day 1 part 2, answer: " + day1Part2Answer);
 
 		Day2 day2 = new Day2();
 		int day2Part1Answer = day2.getAmountOfPasswordsAdheringToPolicy(false);
-		LOG.info("day  2 part 1, answer: " + day2Part1Answer);
+		LOG.info("day 2 part 1, answer: " + day2Part1Answer);
 
 		int day2Part2Answer = day2.getAmountOfPasswordsAdheringToPolicy(true);
-		LOG.info("day  2 part 2, answer: " + day2Part2Answer);
+		LOG.info("day 2 part 2, answer: " + day2Part2Answer);
 
 		Day3 day3 = new Day3();
 		long day3Part1Answer = day3.getAmountOfTreesEncounteredUsingSlope(3, 1);
-		LOG.info("day  3 part 1, answer: " + day3Part1Answer);
+		LOG.info("day 3 part 1, answer: " + day3Part1Answer);
 
 		long day3Part2Answer1 = day3.getAmountOfTreesEncounteredUsingSlope(1, 1);
 		long day3Part2Answer2 = day3.getAmountOfTreesEncounteredUsingSlope(3, 1);
@@ -63,50 +64,50 @@ public class Application
 		long day3Part2Answer5 = day3.getAmountOfTreesEncounteredUsingSlope(1, 2);
 		long day3Part2Answer = day3Part2Answer1 * day3Part2Answer2 * day3Part2Answer3 * day3Part2Answer4
 				* day3Part2Answer5;
-		LOG.info("day  3 part 2, answer: " + day3Part2Answer);
+		LOG.info("day 3 part 2, answer: " + day3Part2Answer);
 
 		Day4 day4 = new Day4();
 		long day4Part1Answer = day4.getAmountOfValidPassports(false);
-		LOG.info("day  4 part 1, answer: " + day4Part1Answer);
+		LOG.info("day 4 part 1, answer: " + day4Part1Answer);
 
 		long day4Part2Answer = day4.getAmountOfValidPassports(true);
-		LOG.info("day  4 part 2, answer: " + day4Part2Answer);
+		LOG.info("day 4 part 2, answer: " + day4Part2Answer);
 
 		Day5 day5 = new Day5();
 		long day5Part1Answer = day5.getHighestSeatID();
-		LOG.info("day  5 part 1, answer: " + day5Part1Answer);
+		LOG.info("day 5 part 1, answer: " + day5Part1Answer);
 
 		long day5Part2Answer = day5.getMySeatID();
-		LOG.info("day  5 part 2, answer: " + day5Part2Answer);
+		LOG.info("day 5 part 2, answer: " + day5Part2Answer);
 
 		Day6 day6 = new Day6();
 		long day6Part1Answer = day6.getSumOfUniqueQuestionsAnsweredYesPerGroup();
-		LOG.info("day  6 part 1, answer: " + day6Part1Answer);
+		LOG.info("day 6 part 1, answer: " + day6Part1Answer);
 
 		long day6Part2Answer = day6.getSumOfQuestionsAnsweredYesByEveryonePerGroup();
-		LOG.info("day  6 part 2, answer: " + day6Part2Answer);
+		LOG.info("day 6 part 2, answer: " + day6Part2Answer);
 
 		Day7 day7 = new Day7();
 		long day7Part1Answer = day7.getPossibleOutermostBagsForBag("shiny gold bag");
-		LOG.info("day  7 part 1, answer: " + day7Part1Answer);
+		LOG.info("day 7 part 1, answer: " + day7Part1Answer);
 
 		int day7Part2Answer = day7.getAmountOfRequiredBagsToCarryBag("shiny gold bag");
-		LOG.info("day  7 part 2, answer: " + day7Part2Answer);
+		LOG.info("day 7 part 2, answer: " + day7Part2Answer);
 
 		Day8 day8 = new Day8();
 		int day8Part1Answer = day8.getAccValueBeforeEnteringLoop();
-		LOG.info("day  8 part 1, answer: " + day8Part1Answer);
+		LOG.info("day 8 part 1, answer: " + day8Part1Answer);
 
 		int day8Part2Answer = day8.fixProgramToMakeItTerminateAndGetAccValue();
-		LOG.info("day  8 part 2, answer: " + day8Part2Answer);
+		LOG.info("day 8 part 2, answer: " + day8Part2Answer);
 
 		Day9 day9 = new Day9();
 		long day9Part1Answer = day9.getFirstNumberThatIsNoSumOfPrevious(25);
-		LOG.info("day  9 part 1, answer: " + day9Part1Answer);
+		LOG.info("day 9 part 1, answer: " + day9Part1Answer);
 
 		long day9Part2Answer = day9
 				.getSmallestAndLargestNumberAsSumFromContiguousSetOfNumbersAddingUpTo(day9Part1Answer);
-		LOG.info("day  9 part 2, answer: " + day9Part2Answer);
+		LOG.info("day 9 part 2, answer: " + day9Part2Answer);
 
 		Day10 day10 = new Day10();
 		long day10Part1Answer = day10.getJoltDifferences();
@@ -121,5 +122,12 @@ public class Application
 
 		long day11Part2Answer = day11.getOccupiedSeatsAfterStabilizationLineOfSightRules();
 		LOG.info("day 11 part 2, answer: " + day11Part2Answer);
+
+		Day12 day12 = new Day12();
+		long day12Part1Answer = day12.getManhattanDistance();
+		LOG.info("day 12 part 1, answer: " + day12Part1Answer);
+
+		long day12Part2Answer = day12.getManhattanDistanceWithWaypoint();
+		LOG.info("day 12 part 2, answer: " + day12Part2Answer);
 	}
 }
