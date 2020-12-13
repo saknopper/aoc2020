@@ -10,6 +10,7 @@ import aoc2020.days.Day1;
 import aoc2020.days.Day10;
 import aoc2020.days.Day11;
 import aoc2020.days.Day12;
+import aoc2020.days.Day13;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
@@ -129,5 +130,12 @@ public class Application
 
 		long day12Part2Answer = day12.getManhattanDistanceWithWaypoint();
 		LOG.info("day 12 part 2, answer: " + day12Part2Answer);
+
+		Day13 day13 = new Day13();
+		long day13Part1Answer = day13.getEarliestBusIdMultipliedByNumerOfMinutesToWait();
+		LOG.info("day 13 part 1, answer: " + day13Part1Answer);
+
+		long day13Part2Answer = day13.findDepartureTimeLeadingToSubsequentDepartures();
+		LOG.info("day 13 part 2, answer: " + day13Part2Answer);
 	}
 }
