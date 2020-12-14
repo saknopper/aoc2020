@@ -104,7 +104,7 @@ public class Day14
         return sum;
     }
 
-    private void getCombinationsForFloatingBits(BigInteger value, List<Integer> floating, List<BigInteger> combinations)
+    private static void getCombinationsForFloatingBits(BigInteger value, List<Integer> floating, List<BigInteger> combinations)
     {
         if (floating.isEmpty()) {
             combinations.add(value);
