@@ -54,12 +54,7 @@ public class Day14
             memory.put(memAddress, value.longValue());
         }
 
-        long sum = 0L;
-        for (var v : memory.values()) {
-            sum += v.longValue();
-        }
-
-        return sum;
+        return memory.values().stream().collect(Collectors.summingLong(Long::valueOf));
     }
 
     public long getSumOfValuesInMemoryPart2()
@@ -96,12 +91,7 @@ public class Day14
             }
         }
 
-        long sum = 0L;
-        for (var v : memory.values()) {
-            sum += v.longValue();
-        }
-
-        return sum;
+        return memory.values().stream().collect(Collectors.summingLong(Long::valueOf));
     }
 
     private static void getCombinationsForFloatingBits(BigInteger value, List<Integer> floating, List<BigInteger> combinations)
