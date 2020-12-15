@@ -12,6 +12,7 @@ import aoc2020.days.Day11;
 import aoc2020.days.Day12;
 import aoc2020.days.Day13;
 import aoc2020.days.Day14;
+import aoc2020.days.Day15;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
@@ -145,5 +146,12 @@ public class Application
 
         long day14Part2Answer = day14.getSumOfValuesInMemoryPart2();
         LOG.info("day 14 part 2, answer: " + day14Part2Answer);
+
+        Day15 day15 = new Day15();
+        long day15Part1Answer = day15.getNumberAtRound(2020);
+        LOG.info("day 15 part 1, answer: " + day15Part1Answer);
+
+        long day15Part2Answer = day15.getNumberAtRound(30000000);
+        LOG.info("day 15 part 2, answer: " + day15Part2Answer);
     }
 }
