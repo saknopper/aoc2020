@@ -85,7 +85,7 @@ public class Day16
 
     public long productOfFieldsStartingWithDeparture()
     {
-        var tickets = filterInvalidTickets(nearbyTickets, rules);
+        var tickets = nearbyTickets.stream().filter(t -> isTicketValid(t, rules)).collect(Collectors.toList());
 
         // Field index -> Rule -> Amount valid
         Map<Integer, Map<Rule, Integer>> scores = new HashMap<>();
@@ -95,7 +95,7 @@ public class Day16
             for (var r : rules) {
                 int counter = 0;
                 for (var t : tickets) {
-                    if (isTicketValid(t, r, i)) {
+                    if (r.isValid(t.get(i))) {
                         counter++;
                     }
                 }
@@ -125,7 +125,7 @@ public class Day16
             if (candidates == candidatesMatch) {
                 candidatesMatch++;
                 mapping.put(index, candidate);
-                scores.remove(index);
+                iterator.remove();
                 iterator = scores.keySet().iterator();
             }
         }
@@ -140,43 +140,15 @@ public class Day16
         return product;
     }
 
-    private static List<List<Integer>> filterInvalidTickets(List<List<Integer>> tickets, List<Rule> rules)
+    private static boolean isTicketValid(List<Integer> ticket, List<Rule> rules)
     {
-        List<List<Integer>> filtered = new ArrayList<>();
-
-        for (var t : tickets) {
-            if (!isTicketInvalid(t, rules)) {
-                filtered.add(t);
-            }
-        }
-
-        return filtered;
-    }
-
-    private static boolean isTicketInvalid(List<Integer> ticket, List<Rule> rules)
-    {
-        boolean isValidTicket = true;
         for (var v : ticket) {
-            boolean isValidValue = false;
-            for (var r : rules) {
-                if (r.isValid(v)) {
-                    isValidValue = true;
-                    break;
-                }
-            }
-            if (!isValidValue) {
-                isValidTicket = false;
+            if (rules.stream().filter(r -> r.isValid(v)).count() == 0L) {
+                return false;
             }
         }
 
-        return !isValidTicket;
-    }
-
-    private static boolean isTicketValid(List<Integer> ticket, Rule rule, int fieldIndex)
-    {
-        var v = ticket.get(fieldIndex);
-
-        return rule.isValid(v);
+        return true;
     }
 
     private static class Rule
