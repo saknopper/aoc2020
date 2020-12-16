@@ -13,6 +13,7 @@ import aoc2020.days.Day12;
 import aoc2020.days.Day13;
 import aoc2020.days.Day14;
 import aoc2020.days.Day15;
+import aoc2020.days.Day16;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
@@ -153,5 +154,12 @@ public class Application
 
         long day15Part2Answer = day15.getNumberAtRound(30000000);
         LOG.info("day 15 part 2, answer: " + day15Part2Answer);
+
+        Day16 day16 = new Day16();
+        long day16Part1Answer = day16.getErrorRate();
+        LOG.info("day 16 part 1, answer: " + day16Part1Answer);
+
+        long day16Part2Answer = day16.productOfFieldsStartingWithDeparture();
+        LOG.info("day 16 part 2, answer: " + day16Part2Answer);
     }
 }
