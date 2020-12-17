@@ -14,6 +14,7 @@ import aoc2020.days.Day13;
 import aoc2020.days.Day14;
 import aoc2020.days.Day15;
 import aoc2020.days.Day16;
+import aoc2020.days.Day17;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
@@ -161,5 +162,12 @@ public class Application
 
         long day16Part2Answer = day16.productOfFieldsStartingWithDeparture();
         LOG.info("day 16 part 2, answer: " + day16Part2Answer);
+
+        Day17 day17 = new Day17();
+        long day17Part1Answer = day17.getActiveCubesAfterCycles3D(6);
+        LOG.info("day 17 part 1, answer: " + day17Part1Answer);
+
+        long day17Part2Answer = day17.getActiveCubesAfterCycles4D(6);
+        LOG.info("day 17 part 2, answer: " + day17Part2Answer);
     }
 }
