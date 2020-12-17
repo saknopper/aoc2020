@@ -36,7 +36,8 @@ public class Day17
     public long getActiveCubesAfterCycles3D(int cycles)
     {
         var initialState = createDeepCopy2D(initialStateInput);
-        int gridSize = initialState.size() + ((cycles + 2) * 2);
+        int gridSize = initialState.size() + (cycles * 2);
+        int initialStateOffset = (gridSize - initialState.size()) / 2;
         Cube[][][] grid = new Cube[gridSize][gridSize][gridSize];
         for (int z = 0; z < gridSize; z++) {
             for (int y = 0; y < gridSize; y++) {
@@ -48,8 +49,8 @@ public class Day17
 
         for (int y = 0; y < initialState.size(); y++) {
             for (int x = 0; x < initialState.size(); x++) {
-                grid[grid.length / 2 - initialState.size() / 2][grid.length / 2 - initialState.size() / 2
-                        + y][grid.length / 2 + x] = initialState.get(y).get(x);
+                grid[grid.length / 2 - initialState.size() / 2][initialStateOffset + y][initialStateOffset
+                        + x] = initialState.get(y).get(x);
             }
         }
 
@@ -92,7 +93,8 @@ public class Day17
     public long getActiveCubesAfterCycles4D(int cycles)
     {
         var initialState = createDeepCopy2D(initialStateInput);
-        int gridSize = initialState.size() + ((cycles + 2) * 2);
+        int gridSize = initialState.size() + (cycles * 2);
+        int initialStateOffset = (gridSize - initialState.size()) / 2;
         Cube[][][][] grid = new Cube[gridSize][gridSize][gridSize][gridSize];
         for (int w = 0; w < gridSize; w++) {
             for (int z = 0; z < gridSize; z++) {
@@ -108,8 +110,8 @@ public class Day17
             for (int y = 0; y < initialState.size(); y++) {
                 for (int x = 0; x < initialState.size(); x++) {
                     grid[grid.length / 2 - initialState.size() / 2][grid.length / 2
-                            - initialState.size() / 2][grid.length / 2 - initialState.size() / 2 + y][grid.length / 2
-                                    + x] = initialState.get(y).get(x);
+                            - initialState.size() / 2][initialStateOffset + y][initialStateOffset + x] = initialState
+                                    .get(y).get(x);
                 }
             }
         }
