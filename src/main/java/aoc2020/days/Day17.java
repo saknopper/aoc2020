@@ -35,10 +35,10 @@ public class Day17
 
     public long getActiveCubesAfterCycles3D(int cycles)
     {
-        var initialState = createDeepCopy2D(initialStateInput);
-        int gridSize = initialState.size() + (cycles * 2);
-        int initialStateOffset = (gridSize - initialState.size()) / 2;
+        int gridSize = initialStateInput.size() + ((cycles) * 2);
         Cube[][][] grid = new Cube[gridSize][gridSize][gridSize];
+        int initialOffset = (gridSize - initialStateInput.size()) / 2;
+        int middleIndex = (grid.length - 1) / 2;
         for (int z = 0; z < gridSize; z++) {
             for (int y = 0; y < gridSize; y++) {
                 for (int x = 0; x < gridSize; x++) {
@@ -47,10 +47,10 @@ public class Day17
             }
         }
 
-        for (int y = 0; y < initialState.size(); y++) {
-            for (int x = 0; x < initialState.size(); x++) {
-                grid[grid.length / 2 - initialState.size() / 2][initialStateOffset + y][initialStateOffset
-                        + x] = initialState.get(y).get(x);
+        for (int y = 0; y < initialStateInput.size(); y++) {
+            for (int x = 0; x < initialStateInput.size(); x++) {
+                grid[middleIndex][initialOffset + y][initialOffset + x] = new Cube(
+                        initialStateInput.get(y).get(x).getState());
             }
         }
 
@@ -92,10 +92,10 @@ public class Day17
 
     public long getActiveCubesAfterCycles4D(int cycles)
     {
-        var initialState = createDeepCopy2D(initialStateInput);
-        int gridSize = initialState.size() + (cycles * 2);
-        int initialStateOffset = (gridSize - initialState.size()) / 2;
+        int gridSize = initialStateInput.size() + (cycles * 2);
         Cube[][][][] grid = new Cube[gridSize][gridSize][gridSize][gridSize];
+        int initialOffset = (gridSize - initialStateInput.size()) / 2;
+        int middleIndex = (grid.length - 1) / 2;
         for (int w = 0; w < gridSize; w++) {
             for (int z = 0; z < gridSize; z++) {
                 for (int y = 0; y < gridSize; y++) {
@@ -107,11 +107,10 @@ public class Day17
         }
 
         for (int z = 0; z < gridSize; z++) {
-            for (int y = 0; y < initialState.size(); y++) {
-                for (int x = 0; x < initialState.size(); x++) {
-                    grid[grid.length / 2 - initialState.size() / 2][grid.length / 2
-                            - initialState.size() / 2][initialStateOffset + y][initialStateOffset + x] = initialState
-                                    .get(y).get(x);
+            for (int y = 0; y < initialStateInput.size(); y++) {
+                for (int x = 0; x < initialStateInput.size(); x++) {
+                    grid[middleIndex][middleIndex][initialOffset + y][initialOffset + x] = new Cube(
+                            initialStateInput.get(y).get(x).getState());
                 }
             }
         }
@@ -155,21 +154,7 @@ public class Day17
         return active;
     }
 
-    private List<List<Cube>> createDeepCopy2D(List<List<Cube>> source)
-    {
-        List<List<Cube>> destination = new ArrayList<>();
-        for (var row : source) {
-            List<Cube> newRow = new ArrayList<>();
-            for (var pos : row) {
-                newRow.add(new Cube(pos.getState()));
-            }
-            destination.add(newRow);
-        }
-
-        return destination;
-    }
-
-    private static int getNumberOfActiveCubesAroundPosition3D(int plane, int row, int pos, Cube[][][] grid)
+    private static int getNumberOfActiveCubesAroundPosition3D(int plane, int row, int pos, final Cube[][][] grid)
     {
         int counter = 0;
 
@@ -196,7 +181,7 @@ public class Day17
         return counter;
     }
 
-    private static int getNumberOfActiveCubesAroundPosition4D(int w, int plane, int row, int pos, Cube[][][][] grid)
+    private static int getNumberOfActiveCubesAroundPosition4D(int w, int plane, int row, int pos, final Cube[][][][] grid)
     {
         int counter = 0;
 
