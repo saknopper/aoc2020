@@ -7,8 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -47,8 +49,8 @@ public class Day19
 
 	public long getAmountOfMessagesAdheringToRulePart2()
 	{
-		List<String> possibilities42 = possibilities(Integer.valueOf(42));
-		List<String> possibilities31 = possibilities(Integer.valueOf(31));
+		Set<String> possibilities42 = possibilities(Integer.valueOf(42));
+		Set<String> possibilities31 = possibilities(Integer.valueOf(31));
 
 		long counter = 0L;
 		for (var msg : messages) {
@@ -110,7 +112,7 @@ public class Day19
 			} else {
 				return 0;
 			}
-		} else if (rule.contains("|")) {
+		} else {
 			String[] factors = rule.split(Pattern.quote(" | "));
 			for (var f : factors) {
 				boolean allValid = true;
@@ -130,31 +132,14 @@ public class Day19
 					return posOffset;
 				}
 			}
-		} else {
-			String[] ruleIndicesToCheck = rule.split(" ");
-			boolean allValid = true;
-			int posOffset = 0;
-			for (int i = 0; i < ruleIndicesToCheck.length; i++) {
-				int posOffsetRule = checkNextRule(msg, pos + posOffset, Integer.valueOf(ruleIndicesToCheck[i]));
-				if (posOffsetRule == 0) {
-					allValid = false;
-					break;
-				}
-
-				posOffset += posOffsetRule;
-			}
-
-			if (allValid == true) {
-				return posOffset;
-			}
 		}
 
 		return 0;
 	}
 
-	private List<String> possibilities(Integer ruleIdx)
+	private Set<String> possibilities(Integer ruleIdx)
 	{
-		List<String> possibilities = new ArrayList<>();
+		Set<String> possibilities = new HashSet<>();
 
 		String rule = rules.get(ruleIdx);
 		if (rule.startsWith("\"")) {
@@ -163,7 +148,7 @@ public class Day19
 		}
 
 		for (var t : rule.split(Pattern.quote(" | "))) {
-			List<List<String>> children = new ArrayList<>();
+			List<Set<String>> children = new ArrayList<>();
 			for (var f : t.split(" ")) {
 				children.add(possibilities(Integer.valueOf(f)));
 			}
