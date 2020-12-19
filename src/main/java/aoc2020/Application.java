@@ -16,6 +16,7 @@ import aoc2020.days.Day15;
 import aoc2020.days.Day16;
 import aoc2020.days.Day17;
 import aoc2020.days.Day18;
+import aoc2020.days.Day19;
 import aoc2020.days.Day2;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
@@ -177,5 +178,12 @@ public class Application
 
         long day18Part2Answer = day18.evaluateAndGetSum(true);
         LOG.info("day 18 part 2, answer: " + day18Part2Answer);
+
+        Day19 day19= new Day19();
+        long day19Part1Answer = day19.getAmountOfMessagesAdheringToRulePart1(0);
+        LOG.info("day 19 part 1, answer: " + day19Part1Answer);
+
+        long day19Part2Answer = day19.getAmountOfMessagesAdheringToRulePart2();
+        LOG.info("day 19 part 2, answer: " + day19Part2Answer);
     }
 }
