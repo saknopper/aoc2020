@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.sanderknopper</groupId>
 	<artifactId>aoc2020</artifactId>
-	<version>0.1.9-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<name>Advent of Code 2020</name>
 
 	<properties>
@@ -19,6 +19,11 @@
 			<groupId>com.github.dpaukov</groupId>
 			<artifactId>combinatoricslib3</artifactId>
 			<version>3.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.11</version>
 		</dependency>
 	</dependencies>
 </project>
