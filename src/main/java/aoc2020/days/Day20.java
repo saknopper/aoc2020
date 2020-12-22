@@ -77,10 +77,10 @@ public class Day20
 
     public long part2()
     {
-        for (var t : tiles) {
+        tiles.forEach(t -> {
             t.setRotate(0);
             t.setFlip(false);
-        }
+        });
 
         List<Tile> remaining = new ArrayList<>(tiles);
 
@@ -97,41 +97,27 @@ public class Day20
             }
         }
 
-        int rowLength = (int) Math.sqrt(tiles.size());
-
-        Tile topLeft = null;
-        for (var t1 : cornerTiles) {
-            boolean done = false;
-
+        Tile topLeft = cornerTiles.get(0);
+        for (var rf1 : FLIP_ROTATE_POSSIBILITIES) {
+            topLeft.setRotate(rf1[0]);
+            topLeft.setFlip(rf1[1] == 1);
             Set<String> sidesMatch = new HashSet<>();
             for (var tOther : remaining) {
                 if (cornerTiles.contains(tOther)) {
                     continue;
                 }
 
-                for (var rf2 : FLIP_ROTATE_POSSIBILITIES) {
-                    tOther.setRotate(rf2[0]);
-                    tOther.setFlip(rf2[1] == 1);
-                    sidesMatch.addAll(tilesFit(t1, tOther));
-                }
+                sidesMatch.addAll(tilesFit(topLeft, tOther));
             }
 
-            if (sidesMatch.size() >= 2) {
-                if (sidesMatch.contains("below") && sidesMatch.contains("right")) {
-                    topLeft = t1;
-                    done = true;
-
-                    break;
-                }
-            }
-
-            if (done) {
+            if (sidesMatch.size() >= 2 && sidesMatch.contains("below") && sidesMatch.contains("right")) {
                 break;
             }
         }
 
         remaining.remove(topLeft);
 
+        int rowLength = (int) Math.sqrt(tiles.size());
         List<List<Integer>> jigsaw = new ArrayList<>(rowLength);
         for (int i = 0; i < rowLength; i++) {
             List<Integer> row = new ArrayList<>(rowLength);
