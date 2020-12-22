@@ -20,6 +20,7 @@ import aoc2020.days.Day19;
 import aoc2020.days.Day2;
 import aoc2020.days.Day20;
 import aoc2020.days.Day21;
+import aoc2020.days.Day22;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
 import aoc2020.days.Day5;
@@ -174,14 +175,14 @@ public class Application
         long day17Part2Answer = day17.getActiveCubesAfterCycles4D(6);
         LOG.info("day 17 part 2, answer: " + day17Part2Answer);
 
-        Day18 day18= new Day18();
+        Day18 day18 = new Day18();
         long day18Part1Answer = day18.evaluateAndGetSum(false);
         LOG.info("day 18 part 1, answer: " + day18Part1Answer);
 
         long day18Part2Answer = day18.evaluateAndGetSum(true);
         LOG.info("day 18 part 2, answer: " + day18Part2Answer);
 
-        Day19 day19= new Day19();
+        Day19 day19 = new Day19();
         long day19Part1Answer = day19.getAmountOfMessagesAdheringToRulePart1(0);
         LOG.info("day 19 part 1, answer: " + day19Part1Answer);
 
@@ -197,9 +198,16 @@ public class Application
 
         Day21 day21 = new Day21();
         long day21Part1Answer = day21.part1();
-        LOG.info("day 19 part 1, answer: " + day21Part1Answer);
+        LOG.info("day 21 part 1, answer: " + day21Part1Answer);
 
         String day21Part2Answer = day21.part2();
-        LOG.info("day 19 part 2, answer: " + day21Part2Answer);
+        LOG.info("day 21 part 2, answer: " + day21Part2Answer);
+
+        Day22 day22 = new Day22();
+        long day22Part1Answer = day22.part1();
+        LOG.info("day 22 part 1, answer: " + day22Part1Answer);
+
+        long day22Part2Answer = day22.part2();
+        LOG.info("day 22 part 2, answer: " + day22Part2Answer);
     }
 }
