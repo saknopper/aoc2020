@@ -39,6 +39,7 @@ public class Day23
     {
         final Integer min = 1;
         final Integer max = 1000000;
+        final int rounds = 10000000;
 
         final List<Integer> cups = new ArrayList<>(max);
         INPUT.chars().forEach(label -> cups.add(Integer.valueOf(String.valueOf((char) label))));
@@ -47,7 +48,7 @@ public class Day23
         }
 
         Integer currentCup = cups.get(0);
-        for (int i = 1; i <= 10000000; i++) {
+        for (int i = 1; i <= rounds; i++) {
             currentCup = playRound(cups, currentCup, min, max);
         }
 
@@ -55,7 +56,7 @@ public class Day23
         var i1 = cups.get((startIndex + 1) % cups.size());
         var i2 = cups.get((startIndex + 2) % cups.size());
 
-        return Long.valueOf(i1.longValue() * i2.longValue()).toString();
+        return Long.toString(i1.longValue() * i2.longValue());
     }
 
     private Integer playRound(final List<Integer> cups, final Integer currentCup, final Integer min, final Integer max)
@@ -63,24 +64,27 @@ public class Day23
         int currentCupIndex = cups.indexOf(currentCup);
         final Integer nextActiveCup = cups.get((currentCupIndex + 4) % cups.size());
 
-        final List<Integer> subCups = new ArrayList<>();
-        for (int i = 1; i < 4; i++) {
-            subCups.add(cups.get((currentCupIndex + i) % cups.size()));
+        final List<Integer> subCups;
+        if (currentCupIndex + 3 >= cups.size()) {
+            subCups = new ArrayList<>(3);
+            for (int i = 1; i < 4; i++) {
+                subCups.add(cups.get((currentCupIndex + i) % cups.size()));
+            }
+        } else {
+            subCups = new ArrayList<>(cups.subList(currentCupIndex + 1, currentCupIndex + 4));
         }
 
         cups.removeAll(subCups);
 
-        int destinationCupIndex = getDestinationCup(cups, currentCup, subCups, min, max);
+        int destinationCupIndex = cups.indexOf(getDestinationCup(currentCup, subCups, min, max));
         cups.addAll(destinationCupIndex + 1, subCups);
 
         return nextActiveCup;
     }
 
-    private int getDestinationCup(final List<Integer> cups, final Integer currentCup, final List<Integer> subCups,
-            final Integer min, final Integer max)
+    private Integer getDestinationCup(final Integer currentCup, final List<Integer> subCups, final Integer min,
+            final Integer max)
     {
-        int currentCupIndex = cups.indexOf(currentCup);
-
         Integer valueToFind = (currentCup - 1) == 0 ? max : currentCup - 1;
         while (subCups.contains(valueToFind)) {
             valueToFind--;
@@ -89,13 +93,6 @@ public class Day23
             }
         }
 
-        for (int i = currentCupIndex + 1; i < (cups.size() + currentCupIndex); i++) {
-            Integer destCandidate = cups.get(i % cups.size());
-            if (destCandidate.equals(valueToFind)) {
-                return i % cups.size();
-            }
-        }
-
-        return -1;
+        return valueToFind;
     }
 }
