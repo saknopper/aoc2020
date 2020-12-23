@@ -215,7 +215,7 @@ public class Application
         String day23Part1Answer = day23.part1();
         LOG.info("day 23 part 1, answer: " + day23Part1Answer);
 
-//        String day23Part2Answer = day23.part2();
-//        LOG.info("day 23 part 2, answer: " + day23Part2Answer);
+        String day23Part2Answer = day23.part2();
+        LOG.info("day 23 part 2, answer: " + day23Part2Answer);
     }
 }
