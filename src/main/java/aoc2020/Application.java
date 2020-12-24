@@ -22,6 +22,7 @@ import aoc2020.days.Day20;
 import aoc2020.days.Day21;
 import aoc2020.days.Day22;
 import aoc2020.days.Day23;
+import aoc2020.days.Day24;
 import aoc2020.days.Day3;
 import aoc2020.days.Day4;
 import aoc2020.days.Day5;
@@ -217,5 +218,12 @@ public class Application
 
         String day23Part2Answer = day23.part2();
         LOG.info("day 23 part 2, answer: " + day23Part2Answer);
+
+        Day24 day24 = new Day24();
+        long day24Part1Answer = day24.part1();
+        LOG.info("day 24 part 1, answer: " + day24Part1Answer);
+
+        long day24Part2Answer = day24.part2();
+        LOG.info("day 24 part 2, answer: " + day24Part2Answer);
     }
 }
