@@ -7,8 +7,6 @@ import java.util.Map;
 
 public class Day23
 {
-    private static final Integer ZERO = Integer.valueOf(0);
-
     // private static final String INPUT = "389125467"; // Example
     private static final String INPUT = "712643589"; // Real
 
@@ -96,15 +94,14 @@ public class Day23
     private Integer getDestinationCup(final Integer currentCup, final List<Integer> subCups, final Integer min,
             final Integer max)
     {
-        Integer currentMinusOne = currentCup - 1;
-        Integer valueToFind = currentMinusOne.equals(ZERO) ? max : currentMinusOne;
-        while (subCups.contains(valueToFind)) {
-            valueToFind = valueToFind - 1;
-            if (valueToFind.compareTo(min) < 0) {
-                valueToFind = max;
+        Integer destinationCup = currentCup;
+        do {
+            destinationCup = destinationCup - 1;
+            if (destinationCup.compareTo(min) < 0) {
+                destinationCup = max;
             }
-        }
+        } while (subCups.contains(destinationCup));
 
-        return valueToFind;
+        return destinationCup;
     }
 }
