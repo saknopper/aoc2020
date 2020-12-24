@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class Day23
 {
@@ -52,9 +53,7 @@ public class Day23
 
         final List<Integer> cups = new ArrayList<>(max);
         INPUT.chars().forEach(label -> cups.add(Integer.valueOf(String.valueOf((char) label))));
-        for (int i = 10; i <= max; i++) {
-            cups.add(Integer.valueOf(i));
-        }
+        IntStream.rangeClosed(10, max).forEach(cups::add);
 
         final Map<Integer, Integer> nextCupCache = new HashMap<>(cups.size());
         for (int i = 0; i < cups.size() - 1; i++) {
@@ -80,28 +79,18 @@ public class Day23
         Integer c2 = cache.get(c1);
         Integer c3 = cache.get(c2);
 
-        final List<Integer> subCups = List.of(c1, c2, c3);
-
-        Integer destination = getDestinationCup(currentCup, subCups, min, max);
+        Integer destination = currentCup;
+        do {
+            destination = destination - 1;
+            if (destination.compareTo(min) < 0) {
+                destination = max;
+            }
+        } while (destination == c1 || destination == c2 || destination == c3);
 
         cache.put(currentCup, cache.get(c3));
         cache.put(c3, cache.get(destination));
         cache.put(destination, c1);
 
         return cache.get(currentCup);
-    }
-
-    private Integer getDestinationCup(final Integer currentCup, final List<Integer> subCups, final Integer min,
-            final Integer max)
-    {
-        Integer destinationCup = currentCup;
-        do {
-            destinationCup = destinationCup - 1;
-            if (destinationCup.compareTo(min) < 0) {
-                destinationCup = max;
-            }
-        } while (subCups.contains(destinationCup));
-
-        return destinationCup;
     }
 }
