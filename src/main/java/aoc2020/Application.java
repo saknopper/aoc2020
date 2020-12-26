@@ -6,30 +6,7 @@ import java.net.URISyntaxException;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import aoc2020.days.Day1;
-import aoc2020.days.Day10;
-import aoc2020.days.Day11;
-import aoc2020.days.Day12;
-import aoc2020.days.Day13;
-import aoc2020.days.Day14;
-import aoc2020.days.Day15;
-import aoc2020.days.Day16;
-import aoc2020.days.Day17;
-import aoc2020.days.Day18;
-import aoc2020.days.Day19;
-import aoc2020.days.Day2;
-import aoc2020.days.Day20;
-import aoc2020.days.Day21;
-import aoc2020.days.Day22;
-import aoc2020.days.Day23;
-import aoc2020.days.Day24;
-import aoc2020.days.Day3;
-import aoc2020.days.Day4;
-import aoc2020.days.Day5;
-import aoc2020.days.Day6;
-import aoc2020.days.Day7;
-import aoc2020.days.Day8;
-import aoc2020.days.Day9;
+import aoc2020.days.*;
 
 public class Application
 {
@@ -225,5 +202,9 @@ public class Application
 
         long day24Part2Answer = day24.part2();
         LOG.info("day 24 part 2, answer: " + day24Part2Answer);
+
+        Day25 day25 = new Day25();
+        long day25Part1Answer = day25.part1();
+        LOG.info("day 25 part 1, answer: " + day25Part1Answer);
     }
 }
